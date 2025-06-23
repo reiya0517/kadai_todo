@@ -118,15 +118,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # 開発用の元ファイル置き場
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')    # 本番用に集約する先
 
-# 開発サーバーで（テンプレートの{% static %}が探しに行く場所）
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-
-# collectstaticコマンドで静的ファイルをまとめる場所（本番用）
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # whitenoiseを使用する為、追加
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
